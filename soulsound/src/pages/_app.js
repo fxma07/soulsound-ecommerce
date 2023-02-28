@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }) {
   return (
     <main className={`${poppins.variable} font-sans`}>
       <Layout>
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </Layout>
     </main>
   );

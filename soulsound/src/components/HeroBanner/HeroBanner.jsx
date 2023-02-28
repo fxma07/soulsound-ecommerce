@@ -1,10 +1,11 @@
 import React from "react";
 import Link from "next/Link";
+import { HeroBannerSection } from "./HeroBannerStyles";
 
 const HeroBanner = ({ heroBanner }) => {
   return (
-    <section className="py-24 px-10 flex  items-center min-h-min">
-      <div class="container mx-auto pl-20 flex  mx-auto bg-gradient-to-r from-amber-500 to-pink-500 rounded-lg shadow-lg">
+    <HeroBannerSection className="py-24 px-10 flex  items-center min-h-min">
+      <div className="container flex pl-20 mx-auto bg-gradient-to-r from-amber-500 to-pink-500 rounded-lg shadow-lg">
         <div className="mx-auto w-2/5 py-24 pr-10">
           <div className="text-left">
             <h1 className="mt-3 text-[4.5rem] font-bold leading-[4rem] tracking-tight text-white">
@@ -25,9 +26,10 @@ const HeroBanner = ({ heroBanner }) => {
             </Link>
           </div>
         </div>
-        <div className="mx-auto w-8/12 hero-image"></div>
+
+        <div className="hero-image mx-auto w-8/12"></div>
       </div>
-    </section>
+    </HeroBannerSection>
   );
 };
 

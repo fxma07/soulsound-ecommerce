@@ -1,11 +1,11 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Navbar from "./Navbar/Navbar";
 import Head from "next/head";
 import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   return (
-    <div classNam="layout">
+    <div className="layout">
       <Head>
         <title>Soulsound</title>
       </Head>

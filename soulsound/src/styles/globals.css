@@ -65,12 +65,31 @@ h6 {
   isolation: isolate;
 }
 
-.hero-image {
-  background-image: url("https://cdn.sanity.io/images/oa1zsrrp/production/7d8ababbf384d4cce4e52d67ecd237b319e08889-612x408.png");
-  background-size: cover;
-  filter: drop-shadow(0.35rem 0rem 0.4rem rgba(0, 0, 0, 0.5));
-  background-repeat: no-repeat;
-  background-position: right center;
+.products-heading {
+  text-align: center;
+  margin: 40px 0px;
+  color: #1e2f3e;
+}
+.products-heading h2 {
+  font-size: 40px;
+  font-weight: 800;
+}
+.products-heading p {
+  font-size: 16px;
+  font-weight: 200;
+}
+
+.layout {
+  padding: 10px;
+}
+
+.products-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+  width: 100%;
 }
 
 @tailwind base;
