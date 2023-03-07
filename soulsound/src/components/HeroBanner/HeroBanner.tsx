@@ -1,8 +1,23 @@
 import React from "react";
-import Link from "next/Link";
+import Link from "next/link";
 import { HeroBannerSection } from "./HeroBannerStyles";
 
-const HeroBanner = ({ heroBanner }) => {
+type BannerType = {
+  heroBanner: {
+    image: string;
+    buttonText?: string;
+    product?: string;
+    desc?: string;
+    smallText?: string;
+    midText?: string;
+    largeText1?: string;
+    largeText2?: string;
+    discount?: string;
+    saleTime?: string;
+  };
+};
+
+const HeroBanner = ({ heroBanner }: BannerType) => {
   return (
     <HeroBannerSection className="py-24 px-10 flex  items-center min-h-min">
       <div className="container flex pl-20 mx-auto bg-gradient-to-r from-amber-500 to-pink-500 rounded-lg shadow-lg">

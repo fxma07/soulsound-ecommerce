@@ -3,7 +3,11 @@ import Navbar from "./Navbar/Navbar";
 import Head from "next/head";
 import Footer from "./Footer";
 
-const Layout = ({ children }) => {
+type ChildrenProps = {
+  children: React.ReactNode;
+};
+
+const Layout = ({ children }: ChildrenProps) => {
   return (
     <div className="layout">
       <Head>

@@ -4,20 +4,36 @@ import { FooterBannerStyles } from "./FooterBannerStyles";
 
 import { urlFor } from "../../../lib/client";
 
-const FooterBanner = ({
-  footerBanner: {
+type BannerType = {
+  image: string;
+  buttonText?: string;
+  product?: string;
+  desc?: string;
+  smallText?: string;
+  midText?: string;
+  largeText1?: string;
+  largeText2?: string;
+  discount?: string;
+  saleTime?: string;
+};
+
+type footerProps = {
+  footerBanner: BannerType;
+};
+
+const FooterBanner = ({ footerBanner }: footerProps) => {
+  const {
     discount,
     largeText1,
     largeText2,
     saleTime,
     smallText,
     midText,
+    desc,
     product,
     buttonText,
     image,
-    desc,
-  },
-}) => {
+  } = footerBanner;
   return (
     <FooterBannerStyles className="footer-banner-container container mx-auto">
       <div className="banner-desc">
