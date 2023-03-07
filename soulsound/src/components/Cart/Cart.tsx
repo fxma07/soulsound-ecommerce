@@ -13,9 +13,15 @@ import { urlFor } from "../../../lib/client";
 import { CartWrapper } from "./CartStyles";
 
 const Cart = () => {
-  const cartRef = useRef();
-  const { totalPrice, totalQuantities, cartItems, setShowCart } =
-    useStateContext();
+  const cartRef = useRef<HTMLDivElement>(null);
+  const {
+    totalPrice,
+    totalQuantities,
+    cartItems,
+    setShowCart,
+    toggleCartItemQuantity,
+    onRemove,
+  } = useStateContext();
 
   return (
     <CartWrapper className="cart-wrapper" ref={cartRef}>
@@ -53,9 +59,58 @@ const Cart = () => {
                   src={urlFor(item?.product.image[0])}
                   className="cart-product-image"
                 />
+                <div className="item-desc">
+                  <div className="flex top">
+                    <h5>{item.product.name}</h5>
+                    <h4>${item.product.price}</h4>
+                  </div>
+                  <div className="flex bottom">
+                    <div>
+                      <p className="quantity-desc">
+                        <span
+                          className="minus"
+                          onClick={() =>
+                            toggleCartItemQuantity(item.product._id, "dec")
+                          }
+                        >
+                          <AiOutlineMinus />
+                        </span>
+                        <span className="num">{item.quantity}</span>
+                        <span
+                          className="plus"
+                          onClick={() =>
+                            toggleCartItemQuantity(item.product._id, "inc")
+                          }
+                        >
+                          <AiOutlinePlus />
+                        </span>
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      className="remove-item"
+                      onClick={() => onRemove(item.product)}
+                    >
+                      <TiDeleteOutline />
+                    </button>
+                  </div>
+                </div>
               </div>
             ))}
         </div>
+        {cartItems.length >= 1 && (
+          <div className="cart-bottom">
+            <div className="total">
+              <h3>Subtotal:</h3>
+              <h3>${totalPrice}</h3>
+            </div>
+            <div className="btn-container">
+              <button type="button" className="btn" onClick="">
+                Pay with Stripe
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </CartWrapper>
   );

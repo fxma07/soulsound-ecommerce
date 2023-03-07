@@ -22,6 +22,8 @@ export type ContextValue = {
   incQty: () => void;
   decQty: () => void;
   onAdd: (product: ProductType, quantity: number) => void;
+  toggleCartItemQuantity: (id: string, value: string) => void;
+  onRemove: (product: ProductType) => void;
 };
 
 // Create a new context object with a default value
@@ -35,6 +37,8 @@ export const Context = createContext<ContextValue>({
   incQty: () => {},
   decQty: () => {},
   onAdd: () => {},
+  toggleCartItemQuantity: () => {},
+  onRemove: () => {},
 });
 
 export const StateContext = ({ children }: ChildrenProps) => {
@@ -44,6 +48,10 @@ export const StateContext = ({ children }: ChildrenProps) => {
   const [totalQuantities, setTotalQuantities] = useState(0);
   const [qty, setQty] = useState(1);
 
+  let foundProduct;
+  let index;
+
+  //Add to Cart
   const onAdd = (product: ProductType, quantity: number) => {
     const checkProductInCart = cartItems.find((item) =>
       item.products.some((p) => p._id === product._id)
@@ -78,10 +86,84 @@ export const StateContext = ({ children }: ChildrenProps) => {
     toast.success(`${qty} ${product.name} added to the cart`);
   };
 
+  //Remove item
+  const onRemove = (product: ProductType) => {
+    let foundProduct: CartItem | undefined = cartItems.find(
+      (item) => item.product._id === product._id
+    );
+    const newCartItems = cartItems.filter(
+      (item) => item.product._id !== product._id
+    );
+
+    if (foundProduct) {
+      setTotalPrice(
+        (prevTotalPrice) =>
+          prevTotalPrice - foundProduct!.product.price * foundProduct!.quantity
+      );
+
+      setTotalQuantities(
+        (prevTotalQuantities) => prevTotalQuantities - foundProduct!.quantity
+      );
+    }
+
+    setCartItems(newCartItems);
+  };
+
+  //Cart increment/decrement
+  const toggleCartItemQuantity = (id: string, value: string) => {
+    const foundProductIndex = cartItems.findIndex(
+      (item) => item.product._id === id
+    );
+
+    if (foundProductIndex === -1) {
+      return;
+    }
+
+    const foundProduct = cartItems[foundProductIndex];
+
+    if (value === "inc") {
+      const updatedProduct = {
+        ...foundProduct,
+        quantity: foundProduct.quantity + 1,
+      };
+
+      const newCartItems = [
+        ...cartItems.slice(0, foundProductIndex),
+        updatedProduct,
+        ...cartItems.slice(foundProductIndex + 1),
+      ];
+
+      setCartItems(newCartItems);
+      setTotalPrice(
+        (prevTotalPrice) => prevTotalPrice + foundProduct.product!.price
+      );
+      setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
+    } else if (value === "dec" && foundProduct.quantity > 1) {
+      const updatedProduct = {
+        ...foundProduct,
+        quantity: foundProduct.quantity - 1,
+      };
+
+      const newCartItems = [
+        ...cartItems.slice(0, foundProductIndex),
+        updatedProduct,
+        ...cartItems.slice(foundProductIndex + 1),
+      ];
+
+      setCartItems(newCartItems);
+      setTotalPrice(
+        (prevTotalPrice) => prevTotalPrice - foundProduct.product!.price
+      );
+      setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1);
+    }
+  };
+
+  //increase qty
   const incQty = () => {
     setQty((prevQty) => prevQty + 1);
   };
 
+  //decrese qty
   const decQty = () => {
     setQty((prevQty) => {
       if (prevQty - 1 < 1) return 1;
@@ -99,6 +181,8 @@ export const StateContext = ({ children }: ChildrenProps) => {
     incQty,
     decQty,
     onAdd,
+    toggleCartItemQuantity,
+    onRemove,
   };
 
   return <Context.Provider value={contextValue}>{children}</Context.Provider>;
