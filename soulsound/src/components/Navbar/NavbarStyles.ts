@@ -1,10 +1,14 @@
 import styled from "styled-components";
 
 export const NavbarStyles = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 50px;
-  position: relative;
+  position: fixed;
+  width: 100%;
+  top: 0;
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+  }
 
   .logo {
     font-weight: 700;

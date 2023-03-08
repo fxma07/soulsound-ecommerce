@@ -10,20 +10,22 @@ const Navbar = () => {
   const handleOpen = () => {};
   return (
     <>
-      <NavbarStyles className="navbar-container">
-        <p className="logo">
-          <Link href="/">SOULSOUND</Link>
-        </p>
-        <button
-          type="button"
-          className="cart-icon"
-          onClick={() => setShowCart(true)}
-        >
-          <AiOutlineShopping />
-          <span className="cart-item-qty">{totalQuantities}</span>
-        </button>
-        {showCart && <Cart />}
+      <NavbarStyles className="navbar-container py-5 px-24">
+        <nav>
+          <p className="logo">
+            <Link href="/">SOULSOUND</Link>
+          </p>
+          <button
+            type="button"
+            className="cart-icon"
+            onClick={() => setShowCart(true)}
+          >
+            <AiOutlineShopping />
+            <span className="cart-item-qty">{totalQuantities}</span>
+          </button>
+        </nav>
       </NavbarStyles>
+      {showCart && <Cart />}
     </>
   );
 };

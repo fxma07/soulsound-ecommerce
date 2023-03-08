@@ -9,7 +9,7 @@ type ChildrenProps = {
 
 const Layout = ({ children }: ChildrenProps) => {
   return (
-    <div className="layout">
+    <>
       <Head>
         <title>Soulsound</title>
       </Head>
@@ -20,7 +20,7 @@ const Layout = ({ children }: ChildrenProps) => {
       <footer>
         <Footer />
       </footer>
-    </div>
+    </>
   );
 };
 

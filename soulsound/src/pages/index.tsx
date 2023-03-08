@@ -2,7 +2,7 @@ import React from "react";
 import { client } from "../../lib/client";
 import { Product, FooterBanner, HeroBanner } from "../components";
 
-type ProductType = {
+export type ProductType = {
   _id: string;
   image: string[];
   name: string;
@@ -33,15 +33,14 @@ const Home = ({ products, bannerData }: HomeProps) => {
     <>
       <HeroBanner heroBanner={bannerData && bannerData[1]} />
       <div className="products-heading">
-        <h2>Best Seller</h2>
-        <p>Speakers of many variations</p>
+        <h2>Best Sellers</h2>
       </div>
       <div className="products-container">
         {products.map((product: ProductType) => (
           <Product key={product._id} product={product} />
         ))}
       </div>
-      <FooterBanner footerBanner={bannerData && bannerData[0]} />
+      {/* <FooterBanner footerBanner={bannerData && bannerData[0]} /> */}
     </>
   );
 };

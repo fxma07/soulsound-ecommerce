@@ -1,5 +1,11 @@
 {
   "compilerOptions": {
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin",
+        "tags": ["styled", "css", "sty"]
+      }
+    ],
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -14,6 +20,15 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/components/HeroBanner/HeroBannerStyles.js",
+    "src/components/Navbar/NavbarStyles.js",
+    "src/components/FooterBanner.js/FooterBannerStyles.js",
+    "src/components/HeroBanner/HeroBannerStyles.js",
+    "src/components/Product/ProductStyles.js"
+  ],
   "exclude": ["node_modules"]
 }

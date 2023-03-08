@@ -3,7 +3,7 @@ import Link from "next/link";
 import { urlFor } from "../../../lib/client";
 import { ProductStyles } from "./ProductStyles";
 
-export type Product = {
+export type ProductType = {
   product: {
     _id: string;
     image: string[];
@@ -13,7 +13,9 @@ export type Product = {
   };
 };
 
-const Product = ({ product: { _id, image, name, slug, price } }: Product) => {
+const Product = ({
+  product: { _id, image, name, slug, price },
+}: ProductType) => {
   return (
     <ProductStyles>
       <Link href={`/product/${slug.current}`}>

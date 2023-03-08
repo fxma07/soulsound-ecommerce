@@ -27,6 +27,7 @@ body {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  color: #1F1F1F;
 }
 /*
   6. Improve media defaults
@@ -71,7 +72,6 @@ h6 {
 .products-heading {
   text-align: center;
   margin: 40px 0px;
-  color: #1e2f3e;
 }
 .products-heading h2 {
   font-size: 40px;
@@ -80,10 +80,6 @@ h6 {
 .products-heading p {
   font-size: 16px;
   font-weight: 200;
-}
-
-.layout {
-  padding: 10px;
 }
 
 .products-container {

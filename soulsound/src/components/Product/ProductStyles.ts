@@ -5,7 +5,6 @@ export const ProductStyles = styled.div`
     cursor: pointer;
     transform: scale(1, 1);
     transition: transform 0.5s ease;
-    color: #324d67;
   }
 
   .product-card:hover {
@@ -14,7 +13,8 @@ export const ProductStyles = styled.div`
 
   .product-image {
     border-radius: 15px;
-    background-color: #ebebeb;
+    background-color: #fee140;
+    background-image: linear-gradient(45deg, #fee140 0%, #fa709a 100%);
     transform: scale(1, 1);
     transition: transform 0.5s ease;
     width: 250px;
@@ -28,6 +28,5 @@ export const ProductStyles = styled.div`
   .product-price {
     font-weight: 800;
     margin-top: 6px;
-    color: black;
   }
 `;

@@ -6,7 +6,7 @@ export const CartWrapper = styled.div`
   position: fixed;
   right: 0;
   top: 0;
-  z-index: 100;
+  z-index: 9999 !important;
   /* will-change: transform; */
   transition: all 1s ease-in-out;
 

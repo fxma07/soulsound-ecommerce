@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const ProductPage = styled.div`
+    padding-top: 65px;
   .product-detail-container {
     display: flex;
     gap: 40px;
@@ -20,7 +21,7 @@ export const ProductPage = styled.div`
   }
 
   .product-detail-image:hover {
-    background-color: #f02d34;
+   background-color: rgb(3 105 161);;
   }
   .small-images-container {
     display: flex;
@@ -36,7 +37,7 @@ export const ProductPage = styled.div`
   }
 
   .selected-image {
-    background-color: #f02d34;
+    background-color: rgb(3 105 161);;
   }
   .reviews {
     color: #f02d34;
@@ -126,11 +127,11 @@ export const ProductPage = styled.div`
   }
   .buttons .add-to-cart {
     padding: 10px 20px;
-    border: 1px solid #f02d34;
+    border: 1px solid rgb(3 105 161);
     font-size: 18px;
     font-weight: 500;
     background-color: white;
-    color: #f02d34;
+    color: rgb(3 105 161);
     cursor: pointer;
     width: 200px;
     transform: scale(1, 1);
@@ -143,7 +144,7 @@ export const ProductPage = styled.div`
     width: 200px;
 
     padding: 10px 20px;
-    background-color: #f02d34;
+    background-color: rgb(3 105 161);;
     color: white;
     border: none;
     font-size: 18px;
