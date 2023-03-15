@@ -10,8 +10,8 @@ const Navbar = () => {
   const handleOpen = () => {};
   return (
     <>
-      <NavbarStyles className="navbar-container py-5 px-24">
-        <nav>
+      <NavbarStyles className="navbar-container">
+        <nav className="navbar container">
           <p className="logo">
             <Link href="/">SOULSOUND</Link>
           </p>

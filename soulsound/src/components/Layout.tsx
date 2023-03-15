@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar/Navbar";
 import Head from "next/head";
-import Footer from "./Footer";
+import Footer from "./Footer/Footer";
 
 type ChildrenProps = {
   children: React.ReactNode;

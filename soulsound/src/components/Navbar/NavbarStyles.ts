@@ -8,6 +8,7 @@ export const NavbarStyles = styled.div`
   nav {
     display: flex;
     justify-content: space-between;
+    margin: 0 auto;
   }
 
   .logo {
