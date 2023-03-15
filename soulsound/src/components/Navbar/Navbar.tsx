@@ -10,7 +10,7 @@ const Navbar = () => {
   const handleOpen = () => {};
   return (
     <>
-      <NavbarStyles className="navbar-container">
+      <NavbarStyles className="navbar-container px-6 py-10 md:px-12">
         <nav className="navbar container">
           <p className="logo">
             <Link href="/">SOULSOUND</Link>

@@ -13,11 +13,12 @@ export const NavbarStyles = styled.div`
 
   .logo {
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    font-size: 1.5rem;
   }
 
   .cart-icon {
-    font-size: 25px;
+    font-size: 2rem;
     cursor: pointer;
     position: relative;
     transition: transform 0.4s ease;
