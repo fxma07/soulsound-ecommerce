@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
-export const NavbarStyles = styled.div`
+export const NavbarStyles = styled.nav`
   position: fixed;
   width: 100%;
   top: 0;
   color: #fafbfa;
-
-  nav {
+  .container {
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
@@ -44,8 +43,4 @@ export const NavbarStyles = styled.div`
     text-align: center;
     font-weight: 600;
   }
-`;
-
-export const Navbar2 = styled(NavbarStyles)`
-  background-color: #181818;
 `;
