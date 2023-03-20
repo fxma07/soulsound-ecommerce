@@ -19,7 +19,7 @@ type BannerType = {
 
 const HeroBanner = ({ heroBanner }: BannerType) => {
   return (
-    <HeroBannerSection className="py-24 px-24 flex  items-center">
+    <HeroBannerSection className="px-6 py-10 md:px-12 md:py-20 flex  items-center">
       <div className="heading-wrapper container-lg text-center mx-auto ">
         <h1 className="mt-3 text-[4.5rem] font-bold leading-[4rem] tracking-tight text-white text-shadow">
           {heroBanner.largeText1}

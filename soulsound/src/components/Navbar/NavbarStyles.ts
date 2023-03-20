@@ -4,6 +4,7 @@ export const NavbarStyles = styled.div`
   position: fixed;
   width: 100%;
   top: 0;
+  color: #fafbfa;
 
   nav {
     display: flex;
@@ -43,4 +44,8 @@ export const NavbarStyles = styled.div`
     text-align: center;
     font-weight: 600;
   }
+`;
+
+export const Navbar2 = styled(NavbarStyles)`
+  background-color: #181818;
 `;

@@ -71,7 +71,6 @@ h6 {
 
 .products-heading {
   text-align: center;
-  margin: 40px 0px;
 }
 .products-heading h2 {
   font-size: 40px;
@@ -86,7 +85,7 @@ h6 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
+  gap: 30px;
   margin-top: 20px;
   width: 100%;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { client } from "../../lib/client";
-import { Product, FooterBanner, HeroBanner } from "../components";
+import { Product, FooterBanner, HeroBanner, ImageGrid } from "../components";
 
 export type ProductType = {
   _id: string;
@@ -32,14 +32,19 @@ const Home = ({ products, bannerData }: HomeProps) => {
   return (
     <>
       <HeroBanner heroBanner={bannerData && bannerData[1]} />
-      <div className="products-heading">
-        <h2>Best Sellers</h2>
-      </div>
-      <div className="products-container">
-        {products.map((product: ProductType) => (
-          <Product key={product._id} product={product} />
-        ))}
-      </div>
+      <section className="px-6 py-10 md:px-12 md:py-20">
+        <div className="container mx-auto">
+          <div className="products-heading mb-12">
+            <h2>Best Sellers</h2>
+          </div>
+          <div className="products-container">
+            {products.map((product: ProductType) => (
+              <Product key={product._id} product={product} />
+            ))}
+          </div>
+        </div>
+      </section>
+      <ImageGrid />
       {/* <FooterBanner footerBanner={bannerData && bannerData[0]} /> */}
     </>
   );

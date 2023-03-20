@@ -13,8 +13,7 @@ export const ProductStyles = styled.div`
 
   .product-image {
     border-radius: 15px;
-    background-color: #fee140;
-    background-image: linear-gradient(45deg, #fee140 0%, #fa709a 100%);
+    background-color: #f1f0f0;
     transform: scale(1, 1);
     transition: transform 0.5s ease;
     width: 250px;

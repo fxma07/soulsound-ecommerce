@@ -5,3 +5,4 @@ export { default as Navbar } from "./Navbar/Navbar";
 export { default as Product } from "./Product/Product";
 export { default as FooterBanner } from "./FooterBanner.js/FooterBanner";
 export { default as Cart } from "./Cart/Cart";
+export { default as ImageGrid } from "./ImageGrid/ImageGrid";
