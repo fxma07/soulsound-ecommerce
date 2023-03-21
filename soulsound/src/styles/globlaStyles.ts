@@ -82,12 +82,7 @@ h6 {
 }
 
 .products-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 20px;
-  width: 100%;
+  
 }
 
 .btn-container{

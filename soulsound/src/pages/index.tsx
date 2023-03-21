@@ -37,10 +37,12 @@ const Home = ({ products, bannerData }: HomeProps) => {
           <div className="products-heading mb-12">
             <h2>Best Sellers</h2>
           </div>
-          <div className="products-container">
-            {products.map((product: ProductType) => (
-              <Product key={product._id} product={product} />
-            ))}
+          <div className="container mx-auto">
+            <div className="products-container grid grid-cols-1 md:grid-cols-2 place-items-center gap-10 md:gap-5 md:place-items-stretch lg:grid-cols-4 lg:place-items-center">
+              {products.map((product: ProductType) => (
+                <Product key={product._id} product={product} />
+              ))}
+            </div>
           </div>
         </div>
       </section>

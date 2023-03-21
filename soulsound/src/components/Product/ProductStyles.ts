@@ -16,8 +16,13 @@ export const ProductStyles = styled.div`
     background-color: #f1f0f0;
     transform: scale(1, 1);
     transition: transform 0.5s ease;
-    width: 250px;
-    height: 250px;
+    width: 100%;
+    height: 100%;
+
+    @media (min-width: 1024px) {
+      max-width: 330px;
+      min-height: 330px;
+    }
   }
 
   .product-name {
