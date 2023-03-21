@@ -5,6 +5,24 @@ export const NavbarStyles = styled.nav`
   width: 100%;
   top: 0;
   color: #fafbfa;
+  z-index: 10000;
+  background-color: transparent;
+  transition: all 0.3s ease;
+
+  &.navbar-top {
+    background-color: transparent;
+  }
+
+  &.visible {
+    background-color: #181818;
+    transition: all 0.5s;
+  }
+
+  &.navbar-scrolled {
+    transition: all 0.5s;
+    transform: translateY(-100%);
+  }
+
   .container {
     display: flex;
     justify-content: space-between;
