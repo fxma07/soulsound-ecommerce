@@ -1,21 +1,14 @@
 import React from "react";
 import Link from "next/link";
 import { urlFor } from "../../../lib/client";
+import { ProductType } from "../../pages";
 import { ProductStyles } from "./ProductStyles";
 
-export type ProductType = {
-  product: {
-    _id: string;
-    image: string[];
-    name: string;
-    slug: { current: string };
-    price: number;
-  };
+type ProductProps = {
+  product: ProductType;
 };
 
-const Product = ({
-  product: { _id, image, name, slug, price },
-}: ProductType) => {
+const Product = ({ product: { image, slug, name, price } }: ProductProps) => {
   return (
     <ProductStyles>
       <Link href={`/product/${slug.current}`}>

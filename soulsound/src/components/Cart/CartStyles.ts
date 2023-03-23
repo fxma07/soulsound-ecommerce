@@ -1,24 +1,24 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-export const CartWrapper = styled.div`
+export const CartWrapper = styled(motion.div)`
   width: 100vw;
-  background: rgba(0, 0, 0, 0.5);
   position: fixed;
-  right: 0;
+  background: rgba(0, 0, 0, 0.5);
   top: 0;
-  z-index: 9999 !important;
-  /* will-change: transform; */
-  transition: all 1s ease-in-out;
+  z-index: 10000 !important;
 
+  
+ 
   .cart-container {
-    height: 100vh;
-    min-width: 600px;
-    background-color: white;
+    min-height: 100vh;
+    width: 100vw;
+    background-color: #fafbfa;
     float: right;
-    padding: 40px 10px;
+    padding: 2rem .5rem;
     position: relative;
   }
-
+  
   .cart-heading {
     display: flex;
     align-items: center;
@@ -52,18 +52,17 @@ export const CartWrapper = styled.div`
     margin-top: 15px;
     overflow: auto;
     max-height: 70vh;
-    padding: 20px 10px;
   }
   .product {
     display: flex;
-    padding: 20px;
+    padding: 1.25rem 0.3125rem;
     width: 100%;
-    gap:30px
+    gap:15px
   }
   .product .cart-product-image {
-    max-width: 180px;
-    min-height: 150px;
-    border-radius: 15px;
+    max-width: 25%;
+    height: 25%;
+    border-radius: 8px;
     background-color: #ebebeb;
   }
 
@@ -73,6 +72,11 @@ export const CartWrapper = styled.div`
     width: 100%;
     color: #324d67;
     align-items: center;
+  }
+
+  .flex.top {
+    flex-direction: column;
+    align-items: start;
   }
 
  .item-desc{
@@ -87,13 +91,13 @@ export const CartWrapper = styled.div`
     gap: 10px;
   }
   .item-desc .bottom {
-    margin-top: 60px;
+
   }
   .flex h5 {
-    font-size: 24px;
+    font-size: 1rem;
   }
   .flex h4 {
-    font-size: 20px;
+    font-size: 0.87rem;
   }
 
    .quantity-desc {
@@ -109,8 +113,8 @@ export const CartWrapper = styled.div`
   }
 
   .quantity-desc span {
-    font-size: 16px;
-    padding: 6px 12px;
+    font-size: 1rem;
+    padding: 0.125rem 0.75rem;
     cursor: pointer;
   }
   .quantity-desc .minus {
@@ -119,7 +123,7 @@ export const CartWrapper = styled.div`
   .quantity-desc .num {
     border-right: 1px solid gray;
     border-left: 1px solid gray;
-    font-size: 20px;
+    font-size: 1rem;
   }
   .quantity-desc .plus {
     color: rgb(49, 168, 49);
@@ -135,22 +139,21 @@ export const CartWrapper = styled.div`
 
 .cart-bottom{
   position: absolute;
+  margin: 0 auto;
   bottom: 12px;
-  right: 5px;
-width: 100%;
-padding: 30px 65px;
-
+  right: 0px;
+  width: 100%;
+  padding: 1rem;
 }
 
 .btn-container{
-  width: 400px;
   margin: auto;
+  width: 100%;
 }
 .btn{
   width: 100%;
-  max-width: 400px;
   padding: 10px 12px;
-  border-radius: 15px;
+  border-radius: 8px;
   border: none;
   font-size: 20px;
   margin-top: 10px;
@@ -159,7 +162,7 @@ padding: 30px 65px;
   background-color: #f02d34;
   color: #fff;
   cursor: pointer;
-    transform: scale(1, 1);
+  transform: scale(1, 1);
   transition: transform 0.5s ease;
 }
 .btn:hover{
@@ -171,8 +174,19 @@ padding: 30px 65px;
   justify-content: space-between;
 }
 .total h3{
-  font-size: 22px;
+  font-size: 1rem;
+}
 
+@media (min-width: 768px){
+
+   .cart-container {
+    min-height: 100vh;
+    width: 80vw;
+    background-color: #fafbfa;
+    float: right;
+    padding: 2rem .5rem;
+    position: relative;
+  }
 }
 
 `;

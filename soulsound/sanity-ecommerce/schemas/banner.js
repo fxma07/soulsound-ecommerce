@@ -6,7 +6,7 @@ export default {
     {
       name: 'image',
       title: 'Image',
-      type: 'image',
+      type: 'SanityImageSource',
       options: {
         hotspot: true,
       },

@@ -1,4 +1,3 @@
-"use client";
 import React, { useState } from "react";
 import { client, urlFor } from "../../../lib/client";
 import { ProductPage } from "./productPageStyles";
@@ -10,24 +9,14 @@ import {
 } from "react-icons/ai";
 import { Product } from "../../components";
 import { useStateContext } from "../../../context/StateContext";
+import { ProductType } from "..";
 
-type ProductType = {
-  _id: string;
-  image: string[];
-  name: string;
-  details: string;
-  price: number;
-  slug: {
-    current: string;
-  };
-};
-
-type Props = {
+type ProductPageProps = {
   product: ProductType;
   products: ProductType[];
 };
 
-const ProductDetails = ({ product, products }: Props) => {
+const ProductDetails = ({ product, products }: ProductPageProps) => {
   const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
 
@@ -39,15 +28,15 @@ const ProductDetails = ({ product, products }: Props) => {
         <div>
           <div className="image-container">
             <img
-              src={urlFor(image && image[index])}
+              src={urlFor(product.image && product.image[index])}
               className="product-detail-image"
             />
           </div>
           <div className="small-images-container">
-            {image?.map((image, i) => (
+            {image?.map((item, i) => (
               <img
                 key={i}
-                src={urlFor(image)}
+                src={urlFor(item)}
                 className={
                   i === index ? "small-image selected-image" : "small-image"
                 }
@@ -58,7 +47,7 @@ const ProductDetails = ({ product, products }: Props) => {
         </div>
 
         <div className="product-detail-desc">
-          <h1 className="text-3xl">{name}</h1>
+          <h1 className="text-3xl">{product.name}</h1>
           <div className="reviews">
             <div className="stars">
               <AiFillStar />
@@ -102,8 +91,8 @@ const ProductDetails = ({ product, products }: Props) => {
         <h2>You may also like</h2>
         <div className="marquee">
           <div className="maylike=products-container flex container mx-auto justify-center gap-3 flex-wrap">
-            {products.map((item) => (
-              <Product key={item._id} product={item} />
+            {products.map((product: ProductType) => (
+              <Product key={product._id} product={product} />
             ))}
           </div>
         </div>
@@ -114,9 +103,7 @@ const ProductDetails = ({ product, products }: Props) => {
 
 export const getStaticPaths = async () => {
   const query = `*[_type == "product"] {
-    slug {
-      current
-    }
+    slug {current}
   }`;
 
   const products = await client.fetch(query);
@@ -133,11 +120,11 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({
-  params: { slug },
-}: {
+interface ParamsProps {
   params: { slug: string };
-}) => {
+}
+
+export const getStaticProps = async ({ params: { slug } }: ParamsProps) => {
   const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
   const productsQuery = '*[_type == "product"]';
 

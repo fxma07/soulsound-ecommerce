@@ -1,9 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import {
   AiOutlineMinus,
   AiOutlinePlus,
-  AiOutlineLeft,
+  AiOutlineClose,
   AiOutlineShopping,
 } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
@@ -12,6 +13,37 @@ import { useStateContext } from "../../../context/StateContext";
 import { urlFor } from "../../../lib/client";
 import { CartWrapper } from "./CartStyles";
 
+export const cartVariants = {
+  open: {
+    opacity: 1,
+    x: "0%",
+    transition: {
+      type: "spring",
+      bounce: 0,
+    },
+  },
+  closed: {
+    opacity: 1,
+    x: "100%",
+    transition: {
+      type: "spring",
+      bounce: 0,
+    },
+  },
+};
+
+export const wrapper = {
+  open: {
+    display: "block",
+    opacity: 1,
+  },
+  closed: {
+    opacity: 0,
+    transition: { delay: 0.3 },
+    transitionEnd: { display: "none" },
+  },
+};
+
 const Cart = () => {
   const cartRef = useRef<HTMLDivElement>(null);
   const {
@@ -19,19 +51,40 @@ const Cart = () => {
     totalQuantities,
     cartItems,
     setShowCart,
+    showCart,
     toggleCartItemQuantity,
     onRemove,
   } = useStateContext();
 
+  useEffect(() => {
+    document.body.style.overflow = showCart ? "hidden" : "auto";
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [showCart]);
+
   return (
-    <CartWrapper className="cart-wrapper" ref={cartRef}>
-      <div className="cart-container">
+    <CartWrapper
+      id="cart"
+      className="cart-wrapper"
+      ref={cartRef}
+      initial="closed"
+      animate={showCart ? "open" : "closed"}
+      variants={wrapper}
+    >
+      <motion.div
+        className="cart-container"
+        initial="closed"
+        animate={showCart ? "open" : "closed"}
+        variants={cartVariants}
+      >
         <button
           type="button"
           className="cart-heading"
           onClick={() => setShowCart(false)}
         >
-          <AiOutlineLeft />
+          <AiOutlineClose size="24px" />
           <span className="heading">Your Cart</span>
           <span className="cart-num-items">({totalQuantities} items)</span>
         </button>
@@ -60,7 +113,7 @@ const Cart = () => {
                   className="cart-product-image"
                 />
                 <div className="item-desc">
-                  <div className="flex top">
+                  <div className="flex col top">
                     <h5>{item.product.name}</h5>
                     <h4>${item.product.price}</h4>
                   </div>
@@ -111,7 +164,7 @@ const Cart = () => {
             </div>
           </div>
         )}
-      </div>
+      </motion.div>
     </CartWrapper>
   );
 };

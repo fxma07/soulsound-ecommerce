@@ -61,4 +61,8 @@ export const NavbarStyles = styled.nav`
     text-align: center;
     font-weight: 600;
   }
+
+  .cart-item-qty.empty {
+    display: none;
+  }
 `;

@@ -1,6 +1,6 @@
 import React from "react";
 import { client } from "../../lib/client";
-import { Product, FooterBanner, HeroBanner, ImageGrid } from "../components";
+import { Product, HeroBanner, ImageGrid } from "../components";
 
 export type ProductType = {
   _id: string;
@@ -8,6 +8,7 @@ export type ProductType = {
   name: string;
   slug: { current: string };
   price: number;
+  details: string;
 };
 
 type BannerType = {
@@ -38,23 +39,21 @@ const Home = ({ products, bannerData }: HomeProps) => {
             <h2>Best Sellers</h2>
           </div>
           <div className="container mx-auto">
-            <div className="products-container grid grid-cols-1 md:grid-cols-2 place-items-center gap-10 md:gap-5 md:place-items-stretch lg:grid-cols-4 lg:place-items-center">
-              {products.map((product: ProductType) => (
+            <div className="products-container grid grid-cols-1 md:grid-cols-2 place-items-center gap-5 md:gap-5 md:place-items-center lg:grid-cols-4 lg:place-items-center">
+              {products?.map((product) => (
                 <Product key={product._id} product={product} />
               ))}
             </div>
           </div>
         </div>
       </section>
-      <ImageGrid />
-      {/* <FooterBanner footerBanner={bannerData && bannerData[0]} /> */}
     </>
   );
 };
 
 export const getServerSideProps = async () => {
   const query = '*[_type == "product"]';
-  const products: ProductType[] = await client.fetch(query);
+  const products = await client.fetch(query);
 
   const bannerQuery = '*[_type == "banner"]';
   const bannerData: BannerType[] = await client.fetch(bannerQuery);

@@ -6,6 +6,7 @@ export const ImageGridSection = styled.section`
     border-radius: 8px;
     width: 100%;
     min-width: 0;
+    overflow: hidden;
   }
 
   .card-1 {
@@ -17,5 +18,26 @@ export const ImageGridSection = styled.section`
   .card-3 {
     min-height: 200px;
     background: black;
+  }
+
+  .a2-wrapper {
+    position: relative;
+  }
+  .a2 {
+    @media (min-width: 768px) {
+      width: 400px;
+      height: 250px;
+    }
+
+    @media (min-width: 1024px) {
+      width: 100%;
+      height: auto;
+      positon: absolute;
+      bottom: 0;
+    }
+  }
+  .content-wrapper {
+    width: 100%;
+    height: 100%;
   }
 `;

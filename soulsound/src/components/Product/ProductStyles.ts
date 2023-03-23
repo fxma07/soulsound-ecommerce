@@ -19,9 +19,9 @@ export const ProductStyles = styled.div`
     width: 100%;
     height: 100%;
 
-    @media (min-width: 1024px) {
-      max-width: 330px;
-      min-height: 330px;
+    @media (min-width: 320px) {
+      width: 250px;
+      height: 250px;
     }
   }
 

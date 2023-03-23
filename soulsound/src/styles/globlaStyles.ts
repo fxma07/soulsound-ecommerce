@@ -28,6 +28,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   color: #1F1F1F;
+  background-color: #fafbfa;
 }
 /*
   6. Improve media defaults
@@ -81,32 +82,5 @@ h6 {
   font-weight: 200;
 }
 
-.products-container {
-  
-}
-
-.btn-container{
-  width: 400px;
-  margin: auto;
-}
-.btn{
-  width: 100%;
-  max-width: 400px;
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: none;
-  font-size: 20px;
-  margin-top: 10px;
-  margin-top: 40px;
-  text-transform: uppercase;
-  background-color: #f02d34;
-  color: #fff;
-  cursor: pointer;
-    transform: scale(1, 1);
-  transition: transform 0.5s ease;
-}
-.btn:hover{
-  transform: scale(1.1,1.1);
-}
 
 `;
