@@ -79,15 +79,19 @@ const Cart = () => {
         animate={showCart ? "open" : "closed"}
         variants={cartVariants}
       >
-        <button
-          type="button"
-          className="cart-heading"
-          onClick={() => setShowCart(false)}
-        >
-          <AiOutlineClose size="24px" />
-          <span className="heading">Your Cart</span>
-          <span className="cart-num-items">({totalQuantities} items)</span>
-        </button>
+        <div className="flex items-center mx-auto">
+          <button
+            type="button"
+            className="cart-heading"
+            onClick={() => setShowCart(false)}
+          >
+            <AiOutlineClose size="20px" />
+          </button>
+          <div className="mx-auto">
+            <span className="heading">Your Cart</span>
+            <span className="cart-num-items">({totalQuantities} items)</span>
+          </div>
+        </div>
 
         {cartItems.length < 1 && (
           <div className="empty-cart">

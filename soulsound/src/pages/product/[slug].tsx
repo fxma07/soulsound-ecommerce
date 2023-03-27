@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { client, urlFor } from "../../../lib/client";
+import { useRouter } from "next/router";
 import { ProductPage } from "./productPageStyles";
 import {
   AiOutlineMinus,
@@ -7,7 +8,7 @@ import {
   AiOutlineStar,
   AiFillStar,
 } from "react-icons/ai";
-import { Product } from "../../components";
+import Carousel from "../../components/Carousel/Carousel";
 import { useStateContext } from "../../../context/StateContext";
 import { ProductType } from "..";
 
@@ -17,86 +18,86 @@ type ProductPageProps = {
 };
 
 const ProductDetails = ({ product, products }: ProductPageProps) => {
-  const { image, name, details, price } = product;
+  const { image, details, price } = product;
   const [index, setIndex] = useState(0);
 
   const { decQty, incQty, qty, onAdd } = useStateContext();
 
   return (
     <ProductPage className="mx-auto container">
-      <div className="product-detail-container justify-center">
-        <div>
-          <div className="image-container">
-            <img
-              src={urlFor(product.image && product.image[index])}
-              className="product-detail-image"
-            />
-          </div>
-          <div className="small-images-container">
-            {image?.map((item, i) => (
+      <div className="product-detail-container container justify-center">
+        <div className="grid grid-cols-1">
+          <div>
+            <div className="image-container">
               <img
-                key={i}
-                src={urlFor(item)}
-                className={
-                  i === index ? "small-image selected-image" : "small-image"
-                }
-                onMouseEnter={() => setIndex(i)}
+                src={urlFor(product.image && product.image[index])}
+                className="product-detail-image"
               />
-            ))}
-          </div>
-        </div>
-
-        <div className="product-detail-desc">
-          <h1 className="text-3xl">{product.name}</h1>
-          <div className="reviews">
-            <div className="stars">
-              <AiFillStar />
-              <AiFillStar />
-              <AiFillStar />
-              <AiFillStar />
-              <AiOutlineStar />
             </div>
-            <p>(20)</p>
+            <div className="small-images-container">
+              {image?.map((item, i) => (
+                <img
+                  key={i}
+                  src={urlFor(item)}
+                  className={
+                    i === index ? "small-image selected-image" : "small-image"
+                  }
+                  onMouseEnter={() => setIndex(i)}
+                />
+              ))}
+            </div>
           </div>
-          <h4>Details: </h4>
-          <p>{details}</p>
-          <p className="price">${price}</p>
-          <div className="quantity">
-            <h3>Quantity:</h3>
-            <p className="quantity-desc">
-              <span className="minus" onClick={decQty}>
-                <AiOutlineMinus />
-              </span>
-              <span className="num">{qty}</span>
-              <span className="plus" onClick={incQty}>
-                <AiOutlinePlus />
-              </span>
-            </p>
-          </div>
-          <div className="buttons">
-            <button
-              type="button"
-              className="add-to-cart"
-              onClick={() => onAdd(product, qty)}
-            >
-              Add to Cart
-            </button>
-            <button type="button" className="buy-now">
-              Buy Now
-            </button>
+
+          <div className="product-detail-desc mt-5">
+            <h1 className="text-3xl">{product.name}</h1>
+            <div className="reviews">
+              <div className="stars">
+                <AiFillStar />
+                <AiFillStar />
+                <AiFillStar />
+                <AiFillStar />
+                <AiOutlineStar />
+              </div>
+              <p>(20)</p>
+            </div>
+            <h4>Details: </h4>
+            <p>{details}</p>
+            <p className="price">${price}</p>
+            <div className="quantity">
+              <h3>Quantity:</h3>
+              <p className="quantity-desc">
+                <span className="minus" onClick={decQty}>
+                  <AiOutlineMinus />
+                </span>
+                <span className="num">{qty}</span>
+                <span className="plus" onClick={incQty}>
+                  <AiOutlinePlus />
+                </span>
+              </p>
+            </div>
+            <div className="buttons">
+              <button
+                type="button"
+                className="add-to-cart"
+                onClick={() => onAdd(product, qty)}
+              >
+                Add to Cart
+              </button>
+              <button type="button" className="buy-now">
+                Buy Now
+              </button>
+            </div>
           </div>
         </div>
       </div>
-      <div className="maylike-products-wrapper mx-auto">
-        <h2>You may also like</h2>
-        <div className="marquee">
-          <div className="maylike=products-container flex container mx-auto justify-center gap-3 flex-wrap">
-            {products.map((product: ProductType) => (
-              <Product key={product._id} product={product} />
-            ))}
+      <section>
+        <div className="container">
+          <div>
+            <h2>You May Also Like</h2>
           </div>
+          <Carousel products={products} />
         </div>
-      </div>
+      </section>
     </ProductPage>
   );
 };
@@ -126,7 +127,7 @@ interface ParamsProps {
 
 export const getStaticProps = async ({ params: { slug } }: ParamsProps) => {
   const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
-  const productsQuery = '*[_type == "product"]';
+  const productsQuery = `*[_type == "product" && slug.current != '${slug}']`;
 
   const product = await client.fetch(query);
   const products = await client.fetch(productsQuery);

@@ -15,20 +15,17 @@ export const CartWrapper = styled(motion.div)`
     width: 100vw;
     background-color: #fafbfa;
     float: right;
-    padding: 2rem .5rem;
+    padding: 2rem .75rem;
     position: relative;
   }
   
   .cart-heading {
-    display: flex;
-    align-items: center;
-    font-size: 18px;
-    font-weight: 500;
     cursor: pointer;
-    gap: 2px;
-    margin-left: 10px;
     border: none;
-    background-color: transparent;
+    background-color: #181818;
+    border-radius: 8px;
+    padding: 3px 3px;
+    color: white;
   }
 
   .cart-heading .heading {
@@ -159,19 +156,16 @@ export const CartWrapper = styled(motion.div)`
   margin-top: 10px;
   margin-top: 40px;
   text-transform: uppercase;
-  background-color: #f02d34;
+  background-color: #181818;
   color: #fff;
   cursor: pointer;
   transform: scale(1, 1);
   transition: transform 0.5s ease;
 }
-.btn:hover{
-  transform: scale(1.1,1.1);
-}
-
 .total{
   display: flex;
   justify-content: space-between;
+  font-weight: 700;
 }
 .total h3{
   font-size: 1rem;
@@ -181,12 +175,19 @@ export const CartWrapper = styled(motion.div)`
 
    .cart-container {
     min-height: 100vh;
-    width: 80vw;
+    width: 70vw;
     background-color: #fafbfa;
     float: right;
     padding: 2rem .5rem;
     position: relative;
   }
 }
+
+@media (min-width: 1024px){
+  .cart-container {
+    width: 30rem;
+  }
+}
+
 
 `;
