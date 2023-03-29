@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
-export const ProductPage = styled.div`
+export const ProductPage = styled.section`
+   padding: 8.25rem 1.5rem;
+   @media (min-width: 768px){
+    padding: 8.25rem 3rem;
+   }
+   
   .product-detail-container {
-    display: flex;
-    padding: 6rem 0.75rem 0rem;
     color: #324d67;
   }
 
@@ -13,11 +16,15 @@ export const ProductPage = styled.div`
     width: 100%;
     cursor: pointer;
     transition: 0.3s ease-in-out;
+
+    @media (min-width: 1024px){
+    }
   }
 
   .product-detail-image:hover {
    background-color: rgb(3 105 161);;
   }
+
   .small-images-container {
     display: flex;
     gap: 10px;
@@ -81,6 +88,10 @@ export const ProductPage = styled.div`
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+
+    @media (min-width:1024px){
+      justify-content: start;
+    }
   }
   .product-detail-desc .buttons {
     display: flex;
@@ -119,8 +130,11 @@ export const ProductPage = styled.div`
   .product-detail-desc .buttons {
     display: flex;
     gap: 30px;
-    flex-wrap: wrap;
     margin-top: 40px;
+
+    @media (min-width: 1024px){
+      flex-wrap: no-wrap;
+    }
   }
   .buttons .add-to-cart {
     padding: 10px 20px;

@@ -24,10 +24,10 @@ const ProductDetails = ({ product, products }: ProductPageProps) => {
   const { decQty, incQty, qty, onAdd } = useStateContext();
 
   return (
-    <ProductPage className="mx-auto container">
-      <div className="product-detail-container container justify-center">
-        <div className="grid grid-cols-1">
-          <div>
+    <ProductPage>
+      <div className="product-detail-container container mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-12">
+          <div className="images-wrapper">
             <div className="image-container">
               <img
                 src={urlFor(product.image && product.image[index])}
@@ -47,8 +47,7 @@ const ProductDetails = ({ product, products }: ProductPageProps) => {
               ))}
             </div>
           </div>
-
-          <div className="product-detail-desc mt-5">
+          <div className="product-detail-desc mt-5 col-span-2">
             <h1 className="text-3xl">{product.name}</h1>
             <div className="reviews">
               <div className="stars">
@@ -60,9 +59,11 @@ const ProductDetails = ({ product, products }: ProductPageProps) => {
               </div>
               <p>(20)</p>
             </div>
-            <h4>Details: </h4>
-            <p>{details}</p>
-            <p className="price">${price}</p>
+            <div className="details-wrapper">
+              <h4>Details: </h4>
+              <p>{details}</p>
+              <p className="price">${price}</p>
+            </div>
             <div className="quantity">
               <h3>Quantity:</h3>
               <p className="quantity-desc">
@@ -90,10 +91,12 @@ const ProductDetails = ({ product, products }: ProductPageProps) => {
           </div>
         </div>
       </div>
-      <section>
-        <div className="container">
-          <div>
-            <h2>You May Also Like</h2>
+      <section className="mt-20">
+        <div className="container mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold md:text-3xl lg:text-4xl">
+              YOU MAY ALSO LIKE
+            </h2>
           </div>
           <Carousel products={products} />
         </div>
