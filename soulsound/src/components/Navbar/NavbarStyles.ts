@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const NavbarStyles = styled.nav`
   position: fixed;
   width: 100%;
-  top: 0;
+  top: 0px;
   color: #fafbfa;
-  z-index: 10000;
+  z-index: 9999;
   background-color: transparent;
   transition: all 0.3s ease;
 

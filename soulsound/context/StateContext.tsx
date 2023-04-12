@@ -8,7 +8,6 @@ type ChildrenProps = {
 
 type CartItem = {
   product: ProductType;
-  products: ProductType[];
   quantity: number;
 };
 
@@ -53,8 +52,8 @@ export const StateContext = ({ children }: ChildrenProps) => {
 
   //Add to Cart
   const onAdd = (product: ProductType, quantity: number) => {
-    const checkProductInCart = cartItems.find((item) =>
-      item.products.some((p) => p._id === product._id)
+    const checkProductInCart = cartItems.find(
+      (item) => item.product._id === product._id
     );
 
     setTotalPrice(
@@ -79,7 +78,6 @@ export const StateContext = ({ children }: ChildrenProps) => {
         {
           product,
           quantity,
-          products: [product],
         },
       ]);
     }

@@ -172,14 +172,18 @@ export const CartWrapper = styled(motion.div)`
 }
 
 @media (min-width: 768px){
-
+  
    .cart-container {
     min-height: 100vh;
     width: 70vw;
     background-color: #fafbfa;
     float: right;
-    padding: 2rem .5rem;
+    padding: 2rem 2rem;
     position: relative;
+  }
+
+  .cart-bottom {
+    padding: 2rem 2rem;
   }
 }
 
@@ -188,6 +192,5 @@ export const CartWrapper = styled(motion.div)`
     width: 30rem;
   }
 }
-
 
 `;

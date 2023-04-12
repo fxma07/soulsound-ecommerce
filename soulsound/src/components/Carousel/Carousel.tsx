@@ -85,13 +85,11 @@ const Carousel = ({ products }: SliderProps) => {
   };
 
   return (
-    <div className="overflow-hidden py-6 ">
-      <Slider {...settings}>
-        {products.map((product: ProductType) => (
-          <Product key={product._id} product={product} />
-        ))}
-      </Slider>
-    </div>
+    <Slider {...settings}>
+      {products.map((product: ProductType) => (
+        <Product key={product._id} product={product} />
+      ))}
+    </Slider>
   );
 };
 

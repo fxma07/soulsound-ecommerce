@@ -20,7 +20,17 @@ export default function App({ Component, pageProps }: AppProps) {
       <main className={`${poppins.variable} font-sans`}>
         <StateContext>
           <Layout>
-            <Toaster />
+            <Toaster
+              containerStyle={{
+                top: 100,
+              }}
+              toastOptions={{
+                style: {
+                  zIndex: 100000,
+                  // For toasts
+                },
+              }}
+            />
             <Component {...pageProps} />
           </Layout>
         </StateContext>

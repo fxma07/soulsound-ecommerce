@@ -47,7 +47,7 @@ const ProductDetails = ({ product, products }: ProductPageProps) => {
               ))}
             </div>
           </div>
-          <div className="product-detail-desc mt-5 col-span-2">
+          <div className="product-detail-desc mt-5 col-span-2 lg:mt-0">
             <h1 className="text-3xl">{product.name}</h1>
             <div className="reviews">
               <div className="stars">
