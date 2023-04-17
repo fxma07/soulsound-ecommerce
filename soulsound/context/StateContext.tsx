@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { toast } from "react-hot-toast";
 import { ProductType } from "../src/pages/index";
 
@@ -15,8 +15,11 @@ export type ContextValue = {
   showCart: boolean;
   setShowCart: (value: boolean) => void;
   cartItems: CartItem[];
+  setCartItems: (value: CartItem[]) => void;
   totalPrice?: number;
+  setTotalPrice: (value: number) => void;
   totalQuantities?: number;
+  setTotalQuantities: (value: number) => void;
   qty: number;
   incQty: () => void;
   decQty: () => void;
@@ -30,8 +33,11 @@ export const Context = createContext<ContextValue>({
   showCart: false,
   setShowCart: () => {},
   cartItems: [],
+  setCartItems: () => {},
   totalPrice: 0,
+  setTotalPrice: () => {},
   totalQuantities: 0,
+  setTotalQuantities: () => {},
   qty: 1,
   incQty: () => {},
   decQty: () => {},
@@ -181,6 +187,9 @@ export const StateContext = ({ children }: ChildrenProps) => {
     onAdd,
     toggleCartItemQuantity,
     onRemove,
+    setCartItems,
+    setTotalPrice,
+    setTotalQuantities,
   };
 
   return <Context.Provider value={contextValue}>{children}</Context.Provider>;

@@ -21,7 +21,13 @@ const ProductDetails = ({ product, products }: ProductPageProps) => {
   const { image, details, price } = product;
   const [index, setIndex] = useState(0);
 
-  const { decQty, incQty, qty, onAdd } = useStateContext();
+  const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
+
+  const handleBuyNow = () => {
+    onAdd(product, qty);
+
+    setShowCart(true);
+  };
 
   return (
     <ProductPage>
@@ -84,7 +90,7 @@ const ProductDetails = ({ product, products }: ProductPageProps) => {
               >
                 Add to Cart
               </button>
-              <button type="button" className="buy-now">
+              <button type="button" className="buy-now" onClick={handleBuyNow}>
                 Buy Now
               </button>
             </div>

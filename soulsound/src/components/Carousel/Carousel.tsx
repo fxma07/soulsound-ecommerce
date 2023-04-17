@@ -29,6 +29,7 @@ interface SliderSettings {
   centerMode: boolean;
   infinite: boolean;
   centerPadding: string;
+  slidesToShow: number;
   speed: number;
   responsive: responsiveProps[];
 }
@@ -40,6 +41,7 @@ const Carousel = ({ products }: SliderProps) => {
     infinite: true,
     centerPadding: "0px",
     speed: 500,
+    slidesToShow: 3,
     responsive: [
       {
         breakpoint: 2000,
