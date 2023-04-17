@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { client, urlFor } from "../../../lib/client";
 import { useRouter } from "next/router";
-import { ProductPage } from "./productPageStyles";
+import { ProductPage } from "../../styles/productPageStyles";
 import {
   AiOutlineMinus,
   AiOutlinePlus,
