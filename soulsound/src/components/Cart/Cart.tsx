@@ -12,7 +12,7 @@ import toast from "react-hot-toast";
 import { useStateContext } from "../../../context/StateContext";
 import { urlFor } from "../../../lib/client";
 import getStripe from "../../../lib/getStripe";
-import { FormEvent } from "react";
+import Image from "next/image";
 import { CartWrapper } from "./CartStyles";
 
 export const cartVariants = {
@@ -134,7 +134,7 @@ const Cart = () => {
           {cartItems.length >= 1 &&
             cartItems.map((item, index) => (
               <div className="product" key={item.product._id}>
-                <img
+                <Image
                   alt={item.product.name}
                   src={urlFor(item?.product.image[0])}
                   className="cart-product-image"

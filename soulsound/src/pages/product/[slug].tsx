@@ -11,6 +11,7 @@ import {
 import Carousel from "../../components/Carousel/Carousel";
 import { useStateContext } from "../../../context/StateContext";
 import { ProductType } from "..";
+import Image from "next/image";
 
 type ProductPageProps = {
   product: ProductType;
@@ -35,7 +36,7 @@ const ProductDetails = ({ product, products }: ProductPageProps) => {
         <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-12">
           <div className="images-wrapper">
             <div className="image-container">
-              <img
+              <Image
                 alt={product.name}
                 src={urlFor(product.image && product.image[index])}
                 className="product-detail-image"
@@ -43,7 +44,7 @@ const ProductDetails = ({ product, products }: ProductPageProps) => {
             </div>
             <div className="small-images-container">
               {image?.map((item, i) => (
-                <img
+                <Image
                   alt={product.name}
                   key={i}
                   src={urlFor(item)}

@@ -28,7 +28,7 @@ const Success = () => {
     setCartItems([]);
     setTotalQuantities(0);
     setTotalPrice(0);
-  }, []);
+  }, [setCartItems, setTotalPrice, setTotalQuantities]);
 
   return (
     <SuccessWrapper className="success-wrapper">

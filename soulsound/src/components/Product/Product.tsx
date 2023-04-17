@@ -3,6 +3,7 @@ import Link from "next/link";
 import { urlFor } from "../../../lib/client";
 import { ProductType } from "../../pages";
 import { ProductStyles } from "./ProductStyles";
+import Image from "next/image";
 
 type ProductProps = {
   product: ProductType;
@@ -13,7 +14,7 @@ const Product = ({ product: { image, slug, name, price } }: ProductProps) => {
     <ProductStyles>
       <Link href={`/product/${slug.current}`}>
         <div className="product-card">
-          <img
+          <Image
             alt={name}
             src={urlFor(image && image[0])}
             className="product-image"
