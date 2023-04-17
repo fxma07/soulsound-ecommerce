@@ -36,6 +36,7 @@ const ProductDetails = ({ product, products }: ProductPageProps) => {
           <div className="images-wrapper">
             <div className="image-container">
               <img
+                alt={product.name}
                 src={urlFor(product.image && product.image[index])}
                 className="product-detail-image"
               />
@@ -43,6 +44,7 @@ const ProductDetails = ({ product, products }: ProductPageProps) => {
             <div className="small-images-container">
               {image?.map((item, i) => (
                 <img
+                  alt={product.name}
                   key={i}
                   src={urlFor(item)}
                   className={
